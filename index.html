@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Results summary component</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    body
+    {
+      display : flex;
+      flex-direction: column;
+      justify-content : center;
+      align-items: center; 
+      font-family: Hanken Grotesk;
+    }
+    .result
+    {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      margin: 30px;
+    }
+    .left-b
+    {
+       width: 220px;
+       border-radius: 10px;
+       background-image: linear-gradient(hsl(252, 100%, 67%),hsl(241, 81%, 54%));
+       display: flex;
+       flex-direction: column;
+       justify-content: center;
+       align-items: center;
+       padding: 10px;
+       z-index: 1;
+       height: 327.27px;
+    }
+    .res
+    {
+      font-weight: 500;
+      font-size : 15px;
+      color: hsl(241, 100%, 89%);
+    }
+    .attribution
+     { 
+      font-size: 11px; text-align: center;
+     }
+    .attribution a 
+    {
+       color: hsl(228, 45%, 44%); 
+    }
+    .circ
+    {
+      height: 100px;
+      width: 100px;
+      border-radius:50%;
+      border-width: none;
+      background-image: linear-gradient(hsla(256, 72%, 46%, 1),hsla(241, 72%, 46%, 0));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      line-height: 15px;
+    }
+    .perc
+    {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 45px;
+      margin-bottom: 0px;
+      vertical-align: bottom;
+      margin-top: 5px;
+    }
+    .sub-perc
+    {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: hsl(241, 100%, 89%);
+      font-size: 12px;
+      margin-bottom: 0px;
+      margin-top: 0px;
+      vertical-align: top;
+    }
+    .grade
+    {
+      font-weight: 500;
+      font-size : 18px;
+      color: white;
+      margin-bottom: 0px;
+    }
+    .comment
+    {
+      display: flex;
+      align-items: center;
+      justify-content: center; 
+      text-align: center;
+      padding: 35px;
+      font-weight: 500;
+      font-size : 12px;
+      color: hsl(241, 100%, 89%);
+      padding-top: 0px;
+      padding-bottom: 0px;
+    }
+    .right-b
+    {
+      width: 250px;
+       border-radius: 10px;
+      border-width: none;
+      background-color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      transition: box-shadow 1s;
+      color: hsl(224, 30%, 27%);
+      margin-left: -10px;
+      z-index: 0;
+    }
+    .right-b:hover
+    {
+      box-shadow : 5px 0px 100px;
+    }
+    .metric-r
+    {
+      font-size: 13px;
+      margin-bottom : 15px;
+      display: flex;
+      flex-direction: row;
+      color: red;
+      margin-right: 40px;
+    }
+    .metric-m
+    {
+      font-size: 13px;
+      margin-bottom : 15px;
+      display: flex;
+      flex-direction: row;
+      color: hsl(39, 100%, 56%);
+      margin-right: 40px;
+    }
+    .metric-ve
+    {
+      font-size: 13px;
+      margin-bottom : 15px;
+      display: flex;
+      flex-direction: row;
+      color: hsl(166, 100%, 37%);
+      margin-right: 50px;
+    }
+    .metric-vi
+    {
+      font-size: 13px;
+      margin-bottom : 15px;
+      display: flex;
+      flex-direction: row;
+      color: hsl(234, 85%, 45%);
+      margin-right: 55px;
+    }
+    .sum
+    {
+      margin-right: 130px;
+      margin-bottom: 15px;
+    }
+    .stats-r
+    {
+      display:  flex;
+      flex-direction: row;
+      width: 200px;
+      background-color: hsl(0, 91%, 95%);
+      border-width: none;
+      border-radius: 10px;
+      margin-right: 0px;
+      margin-bottom: 10px;
+      height : 40px;
+    }
+    .stats-m
+    {
+      display:  flex;
+      flex-direction: row;
+      width: 200px;
+      background-color: hsl(37, 84%, 95%);
+      border-width: none;
+      border-radius: 10px;
+      margin-right: 0px;
+      margin-bottom: 10px;
+      height : 40px;
+    }
+    .stats-ve
+    {
+      display:  flex;
+      flex-direction: row;
+      width: 200px;
+      background-color: hsl(166, 100%, 90%);
+      border-width: none;
+      border-radius: 10px;
+      margin-right: 0px;
+      margin-bottom: 10px;
+      height : 40px;
+    }
+    .stats-vi
+    {
+      display:  flex;
+      flex-direction: row;
+      width: 200px;
+      background-color: hsl(233, 100%, 93%);
+      border-width: none;
+      border-radius: 10px;
+      margin-right: 0px;
+      height: 40px;
+    }
+    .icon
+    {
+      width: 15px;
+      margin-right: 8px;
+      margin-left: 10px;
+    }
+    .sc
+    {
+      margin-top: 15px;
+      font-size: 12px;
+    }
+    .total-sc
+    {
+      margin-left: 5px;
+      color: grey;
+      margin-right: 0px;
+    }
+    .cont
+    {
+      width: 200px;
+      background-color:hsl(224, 30%, 27%);
+      color: white;
+      border-width: 0px;
+      border-radius: 20px;
+      height: 40px;
+      font-family: Hanken Grotesk;
+      margin-bottom: 20px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class = "result">
+  <div class = "left-b">
+    <h3 class = "res">
+      Your Result
+    </h3>
+    <div class = "circ">
+    <h1 class = "perc">
+      76
+    </h1><br>
+    
+    <p class = "sub-perc">
+      of 100
+    </p>
+    </div>
+    <h2 class = "grade">
+      Great
+    </h2>
+    <p class = "comment">
+      You scored higher than 65% of the people who have taken these tests.
+    </p>
+  </div>
+  <div class = "right-b">
+    <h4 class = "sum">
+    Summary
+    </h4>
+    <div class = "stats-r">
+     <img class = "icon" src="/assets/images/icon-reaction.svg"><p class = "metric-r">Reaction</p>
+    <div class = "sc"><span class = "actual-sc">80</span> <span class = "total-sc"> / 100</span></div>
+    </div>
+
+    <div class = "stats-m">
+      <img class = "icon" src = "/assets/images/icon-memory.svg"><p class = "metric-m">Memory</p>
+     <div class = "sc"><span class = "actual-sc">92</span> <span class = "total-sc"> / 100</span></div>
+     </div>
+    
+     <div class = "stats-ve">
+      <img class = "icon" src = "/assets/images/icon-verbal.svg"><p class = "metric-ve">Verbal</p>
+     <div class = "sc"><span class = "actual-sc">61</span> <span class = "total-sc"> / 100</span></div>
+     </div>
+    
+     <div class = "stats-vi">
+      <img class = "icon" src = "/assets/images/icon-visual.svg"><p class = "metric-vi"> Visual</p>
+     <div class = "sc"><span class = "actual-sc">72</span> <span class = "total-sc"> / 100</span></div>
+     </div>
+
+  <button class = "cont">
+    Continue
+  </button>
+</div>
+
+</div>
+
+<div class="attribution">
+  Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+  Coded by <a href="#">Ayodeji Onawunmi</a>.
+</div>
+
+</body>
+</html>
